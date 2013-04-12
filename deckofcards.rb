@@ -1,12 +1,11 @@
-
-
 class Deck
   attr_reader :card_db
-  def initialize
+
+  def initialize(filename)
     @card_db = []
     @correct_array = []
     @wrong_array = []
-
+    parse(filename)
   end
 
   def correct_count
@@ -18,22 +17,22 @@ class Deck
   end
 
 
-  def correct?(user_answer)
-    user_answer == card.answer
+  def correct?(user_answer, actual_answer)
+    user_answer == actual_answer
   end
 
-  def draw_card
-    @card_db.shuffle.pop
-  end
+  # def draw_card
+  #   @card_db.shuffle.pop
+  # end
 
   def parse(filename)
     array = []
-    File.readlines('flash.txt', :quote_char => "\x00").each do |line|
+    File.readlines(filename, :quote_char => "\x00").each do |line|
       array << line.split("\n").delete_if {|string| string == " "}
     end
     array.delete_if {|item| item == []}
     hash = Hash[*array.flatten]
-    p hash
+    hash
     hash.each {|k, v| @card_db << Card.new(k,v) }
   end
 
@@ -49,6 +48,6 @@ class Card
 end
 
 
-  stephen = Deck.new
-  stephen.parse('flashcard.csv')
-  puts stephen.card_db.inspect
+  # stephen = Deck.new
+  # stephen.parse('flashcard.csv')
+  # puts stephen.card_db.inspect

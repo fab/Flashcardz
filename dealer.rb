@@ -1,3 +1,5 @@
+require './deckofcards.rb'
+
 class Dealer
   attr_reader :guess, :deck, :drawn_card
 
@@ -12,14 +14,16 @@ class Dealer
 
   def print_correct
     puts "Correct!"
+    puts
   end
 
   def print_incorrect
     puts "Incorrect! Try again."
+    puts
   end
 
-   def draw_card
-    @drawn_card = deck.pop
+  def draw_card
+    @drawn_card = deck.card_db.shuffle.pop
   end
 
   def display_definition(drawn_card)
@@ -35,7 +39,7 @@ class Dealer
   end
 
   def guess_loop_on_one_card
-    until drawn_card.correct?(guess)
+    until deck.correct?(guess, drawn_card.answer)
       print_incorrect
       prompt_guess
     end
@@ -59,19 +63,20 @@ class Dealer
   end
 end
 
-class Card
-  attr_reader :definition, :answer
+# class Card
+#   attr_reader :definition, :answer
 
-  def initialize(definition, answer)
-    @definition = definition
-    @answer = answer 
-  end
+#   def initialize(definition, answer)
+#     @definition = definition
+#     @answer = answer 
+#   end
 
-  def correct?(guess)
-    guess == answer
-  end
-end
+#   def correct?(guess)
+#     guess == answer
+#   end
+# end
 
-deck = [Card.new('A file format in which values are delimited by commas.', 'CSV'), Card.new('Test definition', 'Some answer')]
-Dealer.new(deck).play!
+# deck = [Card.new('A file format in which values are delimited by commas.', 'CSV'), Card.new('Test definition', 'Some answer')]
+my_deck = Deck.new('flashcard_samples.txt')
+Dealer.new(my_deck).play!
 
