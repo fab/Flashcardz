@@ -1,10 +1,12 @@
 
+
 class Deck
   attr_reader :card_db
   def initialize
     @card_db = []
     @correct_array = []
     @wrong_array = []
+
   end
 
   def correct_count
