@@ -32,6 +32,7 @@ class Dealer
 
   def welcome
     puts "Welcome to Ruby Flash Cards. To play, just enter the correct term for each definition. Ready? Go!"
+    puts
   end
 
   def exit
@@ -46,7 +47,6 @@ class Dealer
   end
 
   def guess_loop_on_deck
-    # while deck.card_db != []
     while deck.card_db != []
       draw_card
       display_definition(drawn_card)
@@ -63,20 +63,6 @@ class Dealer
   end
 end
 
-# class Card
-#   attr_reader :definition, :answer
-
-#   def initialize(definition, answer)
-#     @definition = definition
-#     @answer = answer 
-#   end
-
-#   def correct?(guess)
-#     guess == answer
-#   end
-# end
-
-# deck = [Card.new('A file format in which values are delimited by commas.', 'CSV'), Card.new('Test definition', 'Some answer')]
-my_deck = Deck.new('test_cards.txt')
+my_deck = Deck.new('flashcard_samples.txt')
 Dealer.new(my_deck).play!
 
