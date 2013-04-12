@@ -23,7 +23,7 @@ class Dealer
   end
 
   def draw_card
-    @drawn_card = deck.card_db.shuffle.pop
+    @drawn_card = deck.card_db.shuffle!.pop
   end
 
   def display_definition(drawn_card)
@@ -47,7 +47,7 @@ class Dealer
 
   def guess_loop_on_deck
     # while deck.card_db != []
-    while deck != []
+    while deck.card_db != []
       draw_card
       display_definition(drawn_card)
       prompt_guess
@@ -77,6 +77,6 @@ end
 # end
 
 # deck = [Card.new('A file format in which values are delimited by commas.', 'CSV'), Card.new('Test definition', 'Some answer')]
-my_deck = Deck.new('flashcard_samples.txt')
+my_deck = Deck.new('test_cards.txt')
 Dealer.new(my_deck).play!
 

@@ -1,0 +1,12 @@
+To create a second name for the variable or method.
+alias
+ 
+A command that appends two or more objects together.
+and
+ 
+Designates code that must be run unconditionally at the beginning of the program before any other.
+BEGIN
+ 
+Delimits a "begin" block of code, which can allow the use of while and until in modifier position with multi-line statements.
+begin
+
