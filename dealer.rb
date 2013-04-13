@@ -7,60 +7,65 @@ class Dealer
     @deck = deck
   end
 
-  def prompt_guess
-    puts "Guess:"
-    @guess = gets.chomp    
-  end
-
-  def print_correct
-    puts "Correct!"
-    puts
-  end
-
-  def print_incorrect
-    puts "Incorrect! Try again."
-    puts
-  end
-
-  def draw_card
-    @drawn_card = deck.card_db.shuffle!.pop
-  end
-
-  def display_definition(drawn_card)
-    puts drawn_card.definition
-  end
-
-  def welcome
-    puts "Welcome to Ruby Flash Cards. To play, just enter the correct term for each definition. Ready? Go!"
-    puts
-  end
-
-  def exit
-    puts "That's all the cards. Thanks for playing!"
-  end
-
-  def guess_loop_on_one_card
-    until deck.correct?(guess, drawn_card.answer)
-      print_incorrect
-      prompt_guess
-    end
-  end
-
-  def guess_loop_on_deck
-    while deck.card_db != []
-      draw_card
-      display_definition(drawn_card)
-      prompt_guess
-      guess_loop_on_one_card
-      print_correct
-    end
-  end
-
   def play!
     welcome
     guess_loop_on_deck
     exit
   end
+
+  private
+
+  # should someone be able to tell the dealer to do this?
+  def prompt_guess
+    puts "Guess:"
+    gets.chomp    
+  end
+
+# should someone be able to tell the dealer to do this?
+  def print_correct
+    puts "Correct!"
+    puts
+  end
+# should someone be able to tell the dealer to do this?
+  def print_incorrect
+    puts "Incorrect! Try again."
+    puts
+  end
+# should someone be able to tell the dealer to do this?
+  
+# should someone be able to tell the dealer to do this?
+  def display_definition(card)
+    puts card.definition
+  end
+# should someone be able to tell the dealer to do this?
+  def welcome
+    puts "Welcome to Ruby Flash Cards. To play, just enter the correct term for each definition. Ready? Go!"
+    puts
+  end
+# should someone be able to tell the dealer to do this?
+  def exit
+    puts "That's all the cards. Thanks for playing!"
+  end
+
+# should someone be able to tell the dealer to do this?
+  def guess_loop_on_deck
+    # why does dealer know that card_db is eventually an empty array? what it it was a hash? or a linked_list? or something else?
+    until deck.empty?
+      card = deck.draw!
+      display_definition(card)
+      guess_loop_on_one_card(card)
+      print_correct
+    end
+  end
+  # should someone be able to tell the dealer to do this?
+  def guess_loop_on_one_card(card)
+    while true
+      guess = prompt_guess
+      return if card.correct_guess?(guess)
+      print_incorrect
+    end
+  end
+
 end
 
 my_deck = Deck.new('flashcard_samples.txt')
