@@ -1,6 +1,6 @@
-This Ruby flashcards game brought to you by:
+#This Ruby flashcards game brought to you by:
 
-Fab Mackojc
-Stephen Nguyen
-Ryan Salomon
-Pat Scanlan
+##Fab Mackojc
+##Stephen Nguyen
+##Ryan Salomon
+##Pat Scanlan
