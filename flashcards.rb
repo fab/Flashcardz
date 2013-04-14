@@ -25,7 +25,7 @@ class Dealer
   def guess_loop_on_one_card(card)
     while true
       guess = View.prompt_guess
-      return if card.correct_guess?(guess)
+      break if card.correct_guess?(guess)
       View.print_incorrect
     end
   end
