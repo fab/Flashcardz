@@ -82,10 +82,9 @@ class Deck
   private
 
   def parse(filename)
-    array = File.readlines(filename, :quote_char => "\x00").map do |line|
+    array = File.readlines(filename).map do |line|
       line.split("\n").delete_if {|string| string == " " } 
     end
-    array.delete_if {|item| item == []}
     hash = Hash[*array.flatten]
     hash.each {|k, v| @card_db << Card.new(k,v) }
   end
