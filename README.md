@@ -1,6 +1,11 @@
-#This Ruby flashcards game brought to you by:
+Flashcardz
+==========
+A DBC Group Project to build a Ruby flashcard game.
 
-##Fab Mackojc
-##Stephen Nguyen
-##Ryan Salomon
-##Pat Scanlan
+This was one of our first experiences using Git.
+
+##Built by:
+* [@fabsays](https://github.com/fabsays)
+* [@stephenitis](https://github.com/stephenitis)
+* [@ryan5231](https://github.com/ryan5231)
+* [@patscan](https://github.com/patscan)
